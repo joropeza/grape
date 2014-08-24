@@ -1,0 +1,136 @@
+.breadcrumb {
+	list-style: none;
+	background-color: #f7f7f7; 
+	border-radius: 0;
+}
+.breadcrumb li:last-child{
+	color: #f67400;
+	font-weight: 600;
+}
+
+.form-control{
+	border-radius: 2px;
+	box-shadow: none;
+}
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline{
+  color: #abd14f;
+}
+.has-warning .help-block, .has-warning .control-label, .has-warning .radio, .has-warning .checkbox, .has-warning .radio-inline, .has-warning .checkbox-inline{
+  color: #ffaa3a;
+}
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline{
+  color: #FF6464;
+}
+.has-success .form-control{
+  border-color: #abd14f;
+}
+.has-warning .form-control{
+  border-color: #ffaa3a;
+}
+.has-error .form-control{
+  border-color: #FF6464;
+}
+
+hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.radio-inline, .checkbox-inline{
+	line-height: 20px;
+}
+
+.progress {
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.progress-bar{
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.progress-bar-grey {
+  background-color: #cccccc;
+}
+.progress-bar-info {
+  background-color: #53ACDF;
+}
+.progress-bar-warning {
+  background-color: #ffaa3a;
+}
+.progress-bar-danger {
+  background-color: #FF6464;
+}
+.progress-bar-success {
+  background-color: #abd14f;
+}
+
+/* List Group */
+.list-group-item.info {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #f9fcfd;
+  border: 1px solid #d2e6f1;
+}
+
+.list-group-item.info > .label {
+  float: right;
+  background: #d2e6f1;
+  font-weight: 600;
+  color: #5da4cd;
+  font-size: 11px;
+}
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus{
+  background-color: #ffaa3a;
+  border-color: #ffaa3a;
+}
+@media (min-width: 768px){
+  .navbar {
+    border-radius: 0px;
+  }
+}
+
+.badge-default {
+  background-color: #ccc;
+}
+.badge-default[href]:hover,
+.badge-default[href]:focus {
+  background-color: #eee;
+}
+.badge-primary {
+  background-color: #428bca;
+}
+.badge-primary[href]:hover,
+.badge-primary[href]:focus {
+  background-color: #3071a9;
+}
+.badge-success {
+  background-color: #abd14f;
+}
+.badge-success[href]:hover,
+.badge-success[href]:focus {
+  background-color: #acc14f;
+}
+.badge-info {
+  background-color: #53ACDF;
+}
+.badge-info[href]:hover,
+.badge-info[href]:focus {
+  background-color: #57ACDF;
+}
+.badge-warning {
+  background-color: #ffaa3a;
+}
+.badge-warning[href]:hover,
+.badge-warning[href]:focus {
+  background-color: #ff3a3a;
+}
+.badge-danger {
+  background-color: #FF6464;
+}
+.badge-danger[href]:hover,
+.badge-danger[href]:focus {
+  background-color: #EC2E2E;
+}

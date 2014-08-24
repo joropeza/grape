@@ -1,0 +1,180 @@
+<!-- Top Bar Starts -->
+				<div class="top-bar">
+					<div class="page-title">
+						 {{message}}
+					</div>
+					
+				</div>
+				<!-- Top Bar Ends -->
+
+				<!-- Container fluid Starts -->
+				<div class="container-fluid">
+
+					<hr class="stylish">
+
+					
+					<!-- Spacer Starts -->
+					<div class="spacer">
+
+						<!-- Row Starts -->
+						<div class="row">
+							<div class="col-md-8 col-sm-12 col-xs-12">
+								<div class="panel">
+									<div class="panel-heading">
+										<h4 class="panel-title">Hot Markets</h4>
+										<a href="#" class="custom-icon" data-toggle="tooltip" data-placement="top" title="Edit">
+											<i class="fa fa-pencil"></i>
+										</a>
+									</div>
+									<div class="panel-body">
+										<div id="dt_example" class="example_alt_pagination clearfix datatable-index table-responsive">
+											<table class="table" id="data-table">    
+												<thead>
+													<tr>
+														<th style="width:15%">Mkt</th>
+														<th style="width:45%">Name</th>
+														<th style="width:25%">Progress</th>
+														<th style="width:15%">Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="gradeA" ng-repeat="market in markets">
+														<td><a ng-href="#/details/{{market.marketId}}">{{market.symbol}}</a></td>
+														<td>{{market.name}} <strong class="text-warning">low</strong></td>
+														<td>
+															<div class="progress">
+																<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+																</div>
+															</div>
+														</td>
+														<td>
+															<span class="text-warning">{{market.price}}</span>
+														</td>
+													</tr>
+													
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+								<div class="referrals">
+									<div class="list fb-bg center-align-text">
+										<small class="text-white">Facebook</small>
+										<h3 class="no-margin no-padding">37%</h3>
+									</div>
+									<div class="list twitter-bg center-align-text">
+										<small class="text-white">Twitter</small>
+										<h3 class="no-margin no-padding text-white">23%</h3>
+									</div>
+									<div class="list gplus-bg center-align-text">
+										<small class="text-white">Google Plus</small>
+										<h3 class="no-margin no-padding">17%</h3>
+									</div>
+									<div class="list linkedin-bg center-align-text">
+										<small class="text-white">LinkedIn</small>
+										<h3 class="no-margin no-padding">23%</h3>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+						<!-- Row Ends -->
+
+						
+
+						<!-- Row Starts -->
+						<div class="row">
+							<div class="col-md-8 col-sm-12 col-xs-12">
+								<div class="panel no-margin">
+									<div class="panel-heading">
+										<h4 class="panel-title">Messages</h4>
+										<a href="#" class="custom-icon" data-toggle="tooltip" data-placement="top" title="Setting">
+											<i class="fa fa-cog"></i>
+										</a>
+									</div>
+									<div class="panel-body">
+										<ul class="chats">
+											<li class="in">
+												<img class="avatar" alt="" src="img/user2.jpg">
+												<div class="message">
+													<span class="arrow"></span>
+													<a href="#" class="name">Sandy</a>
+													<span class="date-time">
+														at May 21st, 2014 12:0<i class="fa fa-clock-o"></i>
+													</span>
+													<div class="progress-stats clearfix">
+														<i class="fa fa-camera-retro pull-left fa-lg text-warning"></i>
+														<div class="progress">
+															<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+															</div>
+														</div>
+													</div>
+													<span class="body body-grey">
+														Raw denim you probably haven't heard of them tofu master cleanse.
+													</span>
+												</div>
+											</li>
+											<li class="out">
+												<img class="avatar" alt="" src="img/user3.jpg">
+												<div class="message">
+													<span class="arrow"></span>
+													<a href="#" class="name">James</a>
+													<span class="date-time">
+														at May 14th, 2014 09:32<i class="fa fa-clock-o"></i>
+													</span>
+													<span class="body body-blue">
+														Next level veard stumptown, cardigans banh lomo thundercats <i class="fa fa-smile-o fa-lg text-info"></i>
+													</span>
+												</div>
+											</li>
+											<li class="in">
+												<img class="avatar" alt="" src="img/user4.jpg">
+												<div class="message">
+													<span class="arrow"></span>
+													<a href="#" class="name">Johnson</a>
+													<span class="date-time">
+														at Apr 28th, 2014 09:47<i class="fa fa-clock-o"></i>
+													</span>
+													<span class="body body-grey">
+														Beard stumptown scenester farm-to-table denim coffee viral.
+													</span>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+								<div class="panel no-margin">
+									<div class="panel-heading">
+										<h4 class="panel-title">Notifications</h4>
+										<a href="#" class="custom-icon" data-toggle="tooltip" data-placement="top" title="Notifications">
+											<i class="fa fa-info"></i>
+										</a>
+									</div>
+									<div class="panel-body">
+										<div class="alert alert-success">
+											<strong>Well done!</strong> You successfully read this important alert message.
+										</div>
+										<div class="alert alert-info">
+											<strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+										</div>
+										<div class="alert alert-warning">
+											<strong>Warning!</strong> Better check yourself, you're not looking too good.
+										</div>
+										<div class="alert alert-danger no-margin">
+											<strong>Oh snap!</strong> Change a few things up and try submitting again.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row Ends -->				
+
+					</div>
+					<!-- Spacer Ends -->
+
+				</div>
+				<!-- Container fluid ends -->

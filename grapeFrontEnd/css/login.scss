@@ -1,0 +1,126 @@
+/*  Variables  */
+$primary-color: #33393c;
+$primary-font-color: #ffffff;
+
+$white: #ffffff;
+$black: #000000;
+
+$indigoDye: #2782c4;
+$skyblue: #87CEEB;
+$slategrey: #708090;
+$danger: #e73c3c;
+$warning: #F3CD33;
+$success: #2ecc71;
+
+/*   Mixins  */
+
+/*  Transition  */
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+/*  Box Sizing  */
+@mixin box-sizing($string){
+  -webkit-box-sizing: $string;
+  -moz-box-sizing: $string;
+  box-sizing: $string;
+}
+
+/*  Box Shadow  */
+@mixin box-shadow($off-y, $off-x, $blur, $color){
+  -moz-box-shadow: $off-y $off-x $blur $color; /* FF3.5+ */
+  -webkit-box-shadow: $off-y $off-x $blur $color; /* Saf3.0+, Chrome */
+  box-shadow: $off-y $off-x $blur $color; /* Opera 10.5, IE9 */
+}
+
+@mixin box-shadow-inset($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow: $top $left $blur $color $inset;
+  -moz-box-shadow: $top $left $blur $color $inset;
+  box-shadow: $top $left $blur $color $inset;
+}
+
+/*  Border Radius  */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transform($args){
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -o-transform: $args;
+  -ms-transform: $args;
+  transform: $args;
+}
+
+/*  Opacity  */
+@mixin opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+body {
+  background: url(http://37.media.tumblr.com/a35a6be745f3f60dda5bc4734184ba17/tumblr_n5w6lctTqq1st5lhmo1_1280.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+}
+
+/*  Login  */
+.login-container{
+  margin: 50px auto;
+  text-align: center;
+  .login-header{
+    background: darken($white, 5%);
+    padding: 10px 5px;
+    text-align: center;
+    font-weight: 800;
+    border-bottom: 1px solid darken($white, 15%);
+    border-radius: 2px 2px 0 0;
+  }
+  .login-wrapper{
+    background: $white;
+    @include border-radius(2px);
+    padding-bottom: 20px;
+    h5{
+      margin-top: 30px;
+    }
+  }
+  a.fb-btn{
+    width: 300px;
+    height: 48px;
+    margin: 20px auto;
+    padding: 0;
+  }
+  form{
+    padding: 10px 25px;
+  }
+  .form-control{
+    height: 48px;
+    @include border-radius(2px);
+    box-shadow: none;
+  }
+  .form-control-feedback{
+    font-size: 24px;
+    top: 30px;
+    color: #999;
+  }
+  .form-group label{
+    text-align: left !important;
+    display: block;
+  }
+  a{
+    padding: 15px;
+    display: block;
+  }
+  a.underline{
+    text-decoration: underline;
+  }
+}

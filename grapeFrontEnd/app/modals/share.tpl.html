@@ -1,0 +1,77 @@
+﻿<div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" data-dismiss="modal" class="close" ng-click="close()"><img class="exit-icon" src="../../assets/icons/exit-alt.png"></button>
+				<div class="center">Share Video</div>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-6 col-sm-3 social">
+						<button class="bttn" ng-click="sharingWithEmail = !sharingWithEmail">Email</button>
+					</div>
+					<div class="col-xs-6 col-sm-3 social">
+						<div class="fb-share-button" data-href="http://tiltvideo.com" data-type="button"></div>
+					</div>
+					<div class="col-xs-6 col-sm-3 social">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this video I just made!" data-count="none" data-via="tiltvideo"data-size="large">Tweet</a>
+					</div>
+					<div class="col-xs-6 col-sm-3 social">
+						<div class="pinterest">
+							<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="white" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_white_28.png" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="embed-cont" ng-hide="sharingWithEmail">
+				<hr>
+				<div class="col-md-3 txt-bump"><b>Embed</b></div>
+				<div class="col-md-9">
+					<textarea class="tilt-input embed"></textarea>
+				</div>
+				<hr>
+				<br />
+				<br />
+				<br />
+				<br />
+			</div>
+			<div ng-show="sharingWithEmail" class="share-with-email modal-body">
+				<form name="email">
+					<div class="col-md-3 txt-bump">
+						<label for="Name">Your Name:</label>
+					</div>
+					<div class="col-md-9">
+						<input ng-model="fromName" name="Name" class="tilt-input text-input" type="text" placeholder="Your Name" required>
+					</div>
+					<div class="col-md-3 txt-bump">
+						<label for="sendTo">Send To:</label>
+					</div>
+					<div class="col-md-9">
+						<input ng-model="toEmail" name="toEmail" class="tilt-input text-input" type="email" maxlength="150" placeholder="name@example.com, name@example.com" required>
+						<div ng-show="email.toEmail.$dirty && email.toEmail.$invalid">Invalid Email</div>
+					</div>
+					<button class="bttn bttn-blue" ng-disabled="email.toEmail.$dirty && email.toEmail.$invalid || email.$invalid" ng-click="sendEmail()">Send</button>
+					<button class="bttn" ng-click="sharingWithEmail=false">Cancel</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="bttn" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+
+		<!-- FB -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=286511614863558&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		<!-- /fb -->
+		<!-- Twitter -->
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<!-- /Twitter -->
+		<!-- Pinterest -->
+		<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+<!-- /pinterest -->
