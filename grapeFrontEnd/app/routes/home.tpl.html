@@ -21,7 +21,7 @@
 							<div class="col-md-8 col-sm-12 col-xs-12">
 								<div class="panel">
 									<div class="panel-heading">
-										<h4 class="panel-title">Hot Markets</h4>
+										<h4 class="panel-title">Regions</h4>
 										<a href="#" class="custom-icon" data-toggle="tooltip" data-placement="top" title="Edit">
 											<i class="fa fa-pencil"></i>
 										</a>
@@ -31,16 +31,16 @@
 											<table class="table" id="data-table">    
 												<thead>
 													<tr>
-														<th style="width:15%">Mkt</th>
-														<th style="width:45%">Name</th>
+														<th style="width:15%">Area</th>
+														<th style="width:45%">Country</th>
 														<th style="width:25%">Progress</th>
 														<th style="width:15%">Price</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="gradeA" ng-repeat="market in markets">
-														<td><a ng-href="#/details/{{market.marketId}}">{{market.symbol}}</a></td>
-														<td>{{market.name}} <strong class="text-warning">low</strong></td>
+													<tr class="gradeA" ng-repeat="region in regions">
+														<td><a ng-href="#/regions/{{region.regionId}}">{{region.areaName}}</a></td>
+														<td>{{region.country}} <strong class="text-warning">low</strong></td>
 														<td>
 															<div class="progress">
 																<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">

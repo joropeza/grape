@@ -4,13 +4,12 @@ google.load("visualization", "1", {
                 packages: ["corechart"]
             });
 
-angular.module('markets', ['ngCookies','ngRoute', 'LocalStorageModule'])
+angular.module('wines', ['ngCookies','ngRoute', 'LocalStorageModule'])
 
 .config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.
                 when('/', {templateUrl: 'app/routes/home.tpl.html',   controller: "HomeController"}).
-                when('/create', {templateUrl: 'app/routes/marketsCreate.tpl.html',   controller: "HomeController"}).
-                when('/details/:id', {templateUrl: 'app/routes/marketsDetails.tpl.html',   controller: "DetailsController"}).
+                when('/regions/:id', {templateUrl: 'app/routes/regionDetails.tpl.html',   controller: "regionController"}).
                 when("/login", {
                     controller: "loginController",
                     templateUrl: "/app/routes/login.tpl.html"
@@ -23,18 +22,18 @@ angular.module('markets', ['ngCookies','ngRoute', 'LocalStorageModule'])
                 otherwise({redirectTo: '/'});
 }])
 
-.controller('HomeController', ['$scope' ,'marketService', function ($scope, $marketService) {
+.controller('HomeController', ['$scope' ,'wineService', function ($scope, $wineService) {
 
-	$scope.message = "Market Machine";
-    $marketService.topTen().then(function (response) {
+	$scope.message = "Vintagely";
+    $wineService.regions().then(function (response) {
         
-            $scope.markets = response;
+            $scope.regions = response;
 
     });
 	
 }])
 
-.controller('DetailsController', ['$scope' , '$routeParams', 'marketService', function ($scope, $routeParams, $marketService) {
+.controller('regionController', ['$scope' , '$routeParams', 'marketService', function ($scope, $routeParams, $marketService) {
 
     $marketService.entityDetails($routeParams.id).then(function (response) {
             $scope.message = response.name;
@@ -73,15 +72,15 @@ angular.module('markets', ['ngCookies','ngRoute', 'LocalStorageModule'])
     
 }])
 
-.service('marketService', ['$http', '$location', function ($http, $location) {
+.service('wineService', ['$http', '$location', function ($http, $location) {
 
 	var myService = {
-		topTen: function () {
+		regions: function () {
             // $http returns a promise, which has a then function, which also returns a promise
 
 
             //var promise = $http.get('/Api/Videos/Enhancements?GUID=c0890c91-8e0d-45ec-9e92-8648761b1238.mp4').then(function (response) {
-            	var promise = $http.get('/api/Markets/TopTen').then(function (response) {
+            	var promise = $http.get('/api/Regions').then(function (response) {
 
                 // The then function here is an opportunity to modify the response
                 console.log(response);
