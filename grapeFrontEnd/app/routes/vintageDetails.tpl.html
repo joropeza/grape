@@ -1,0 +1,78 @@
+<!-- Top Bar Starts -->
+				<div class="top-bar">
+					<div class="page-title">
+						 {{message}}
+					</div>
+					
+				</div>
+				<!-- Top Bar Ends -->
+
+				<!-- Container fluid Starts -->
+				<div class="container-fluid">
+
+					<hr class="stylish">
+
+					
+					<!-- Spacer Starts -->
+					<div class="spacer">
+
+						<!-- Row Starts -->
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="panel">
+									<div class="panel-heading">
+										<h4 class="panel-title">Days</h4>
+									</div>
+									<div class="panel-body">
+										<div id="dt_example" class="example_alt_pagination clearfix datatable-index table-responsive">
+											<table class="table" id="data-table">    
+												<thead>
+													<tr>
+														<th style="width:10%">Date</th>
+														<th style="width:20%">Degree Days</th>
+														<th style="width:30%">High</th>
+														<th style="width:30%">Low</th>
+														
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="gradeA" ng-repeat="day in vintage.days">
+														<td>{{day.date}}</td>
+														<td class="text-warning">{{day.degreeDays}}</td>
+														<td>{{day.high}}</td>
+														<td>{{day.low}}</td>
+														
+													</tr>
+													
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row Ends -->	
+
+						<!-- Row Start -->
+						<div class="row">
+							<div class="col-md-12 col-sx-12 col-sm-12">
+								<div class="panel">
+									<div class="panel-heading">
+										<h4 class="panel-title">Candlestick Chart</h4>
+									</div>
+									<div class="panel-body">
+										<div id="candlestick_chart"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Row End -->		
+
+					</div>
+					<!-- Spacer Ends -->
+
+				</div>
+				<!-- Container fluid ends -->
+
+				<!-- Google Visualization JS -->
+		<script type="text/javascript" src="js/google-api.js"></script>

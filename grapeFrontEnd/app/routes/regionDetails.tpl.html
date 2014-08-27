@@ -21,31 +21,27 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="panel">
 									<div class="panel-heading">
-										<h4 class="panel-title">Daily Candles</h4>
+										<h4 class="panel-title">Vintages</h4>
 									</div>
 									<div class="panel-body">
 										<div id="dt_example" class="example_alt_pagination clearfix datatable-index table-responsive">
 											<table class="table" id="data-table">    
 												<thead>
 													<tr>
-														<th style="width:10%">Date</th>
-														<th style="width:20%">Close</th>
-														<th style="width:30%">Candle</th>
-														<th style="width:20%">Gap</th>
-														<th style="width:10%">Trend</th>
+														<th style="width:10%">Year</th>
+														<th style="width:20%">Degree Days</th>
+														<th style="width:30%">Parker Score</th>
+														<th style="width:30%">Status</th>
+														
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="gradeA" ng-repeat="day in market.days">
-														<td>{{day.date}}</td>
-														<td class="text-warning">{{day.close}}</td>
-														<td>{{day.candle}}</td>
-														<td>
-															{{day.gap}}
-														</td>
-														<td>
-															<span class="text-warning">{{day.trend}}</span>
-														</td>
+													<tr class="gradeA" ng-repeat="vintage in region.vintages">
+														<td><a ng-href="#/vintages/{{vintage.vintageId}}">{{vintage.year}}</a></td>
+														<td class="text-warning">{{vintage.degreeDays}}</td>
+														<td>{{vintage.parkerScore}}</td>
+														<td>{{vintage.status}}</td>
+														
 													</tr>
 													
 												</tbody>

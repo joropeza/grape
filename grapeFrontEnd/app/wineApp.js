@@ -10,6 +10,7 @@ angular.module('wines', ['ngCookies','ngRoute', 'LocalStorageModule'])
 	$routeProvider.
                 when('/', {templateUrl: 'app/routes/home.tpl.html',   controller: "HomeController"}).
                 when('/regions/:id', {templateUrl: 'app/routes/regionDetails.tpl.html',   controller: "regionController"}).
+                when('/vintages/:id', {templateUrl: 'app/routes/vintageDetails.tpl.html',   controller: "vintageController"}).
                 when("/login", {
                     controller: "loginController",
                     templateUrl: "/app/routes/login.tpl.html"
@@ -33,38 +34,115 @@ angular.module('wines', ['ngCookies','ngRoute', 'LocalStorageModule'])
 	
 }])
 
-.controller('regionController', ['$scope' , '$routeParams', 'marketService', function ($scope, $routeParams, $marketService) {
+.controller('regionController', ['$scope' , '$routeParams', 'wineService', function ($scope, $routeParams, $wineService) {
 
-    $marketService.entityDetails($routeParams.id).then(function (response) {
-            $scope.message = response.name;
+    $wineService.regionDetails($routeParams.id).then(function (response) {
+            $scope.message = response.areaName;
     
-            $scope.market = response;
+            $scope.region = response;
 
             var chartData = [];
 
-            $scope.market.days.forEach(function(entry) {
+            chartData.push(['Year','Degree Days'])
+
+            $scope.region.vintages.forEach(function(entry) {
                 
-                var day = [entry.date,entry.low,entry.open,entry.close,entry.high];
+                var year = [entry.year,entry.degreeDays];
+                chartData.push(year);
+                console.log(year);
+
+            });
+            
+           
+  var data = google.visualization.arrayToDataTable(chartData);
+    
+
+  var options = {
+    width: 'auto',
+    pointSize: 7,
+    lineWidth: 1,
+    height: '200',
+    backgroundColor: 'transparent',
+    colors: [$blue, $red, $green, $yellow],
+    tooltip: {
+      textStyle: {
+        color: '#666666',
+        fontSize: 11
+      },
+      showColorCode: true
+    },
+    legend: {
+      textStyle: {
+        color: 'black',
+        fontSize: 12
+      }
+    },
+    chartArea: {
+      left: 40,
+      top: 10,
+      height: "80%"
+    }
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('candlestick_chart'));
+  chart.draw(data, options);
+  
+
+    });
+    
+}])
+
+.controller('vintageController', ['$scope' , '$routeParams', 'wineService', function ($scope, $routeParams, $wineService) {
+
+    $wineService.vintageDetails($routeParams.id).then(function (response) {
+            $scope.message = response.vintageName;
+    
+            $scope.vintage = response;
+
+            var chartData = [];
+
+            chartData.push(['Date','Degree Days'])
+
+            $scope.vintage.days.forEach(function(entry) {
+                
+                var day = [entry.date,entry.degreeDays];
                 chartData.push(day);
                 console.log(day);
 
             });
             
            
-  var data = google.visualization.arrayToDataTable(
-    chartData
-    // Treat first row as data as well.
-    , true);
+  var data = google.visualization.arrayToDataTable(chartData);
+    
 
   var options = {
-    legend: 'none',
     width: 'auto',
-    height: '280',
+    pointSize: 7,
+    lineWidth: 1,
+    height: '200',
     backgroundColor: 'transparent',
-    colors: [$red, $blue, $green, $yellow],
+    colors: [$blue, $red, $green, $yellow],
+    tooltip: {
+      textStyle: {
+        color: '#666666',
+        fontSize: 11
+      },
+      showColorCode: true
+    },
+    legend: {
+      textStyle: {
+        color: 'black',
+        fontSize: 12
+      }
+    },
+    chartArea: {
+      left: 40,
+      top: 10,
+      height: "80%"
+    }
   };
 
-  var chart = new google.visualization.CandlestickChart(document.getElementById('candlestick_chart'));
+  var chart = new google.visualization.AreaChart(document.getElementById('candlestick_chart'));
   chart.draw(data, options);
   
 
@@ -91,12 +169,28 @@ angular.module('wines', ['ngCookies','ngRoute', 'LocalStorageModule'])
             return promise;
           },
          
-        entityDetails: function (id) {
+        regionDetails: function (id) {
             // $http returns a promise, which has a then function, which also returns a promise
 
 
             //var promise = $http.get('/Api/Videos/Enhancements?GUID=c0890c91-8e0d-45ec-9e92-8648761b1238.mp4').then(function (response) {
-                var promise = $http.get('/api/Markets/' + id).then(function (response) {
+                var promise = $http.get('/api/Regions/' + id).then(function (response) {
+
+                // The then function here is an opportunity to modify the response
+                console.log(response);
+                // The return value gets picked up by the then in the controller.
+                return response.data;
+              });
+            // Return the promise to the controller
+            return promise;
+          },
+        
+        vintageDetails: function (id) {
+            // $http returns a promise, which has a then function, which also returns a promise
+
+
+            //var promise = $http.get('/Api/Videos/Enhancements?GUID=c0890c91-8e0d-45ec-9e92-8648761b1238.mp4').then(function (response) {
+                var promise = $http.get('/api/Vintages/' + id).then(function (response) {
 
                 // The then function here is an opportunity to modify the response
                 console.log(response);
