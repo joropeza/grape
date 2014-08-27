@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WineDBModelStoreContainer" CdmEntityContainer="WineDBEntities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="WineDBModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="City1" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeatherDays">
+      <EntityTypeMapping TypeName="WineDBModel.WeatherDay">
+        <MappingFragment StoreEntitySet="WeatherDays">
+          <ScalarProperty Name="WeatherDayId" ColumnName="WeatherDayId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="HighTemperature" ColumnName="HighTemperature" />
+          <ScalarProperty Name="LowTemperature" ColumnName="LowTemperature" />
+          <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="WineDBModel.Region">
+        <MappingFragment StoreEntitySet="Regions">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vintages">
+      <EntityTypeMapping TypeName="WineDBModel.Vintage">
+        <MappingFragment StoreEntitySet="Vintages">
+          <ScalarProperty Name="ParkerScore" ColumnName="ParkerScore" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="VintageId" ColumnName="VintageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

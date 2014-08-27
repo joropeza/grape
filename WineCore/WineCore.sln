@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineCore", "WineCore\WineCore.csproj", "{82663AD1-E35A-4166-BF63-67575CBFAA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineConsoleApplication", "WineConsoleApplication\WineConsoleApplication.csproj", "{8CB36AEA-3C2B-4B82-9EFB-6C4F06C88C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineCoreWebBackend", "WineCoreWebBackend\WineCoreWebBackend.csproj", "{FE709E65-8ED4-422E-BAD7-46460A43E488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82663AD1-E35A-4166-BF63-67575CBFAA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82663AD1-E35A-4166-BF63-67575CBFAA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82663AD1-E35A-4166-BF63-67575CBFAA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82663AD1-E35A-4166-BF63-67575CBFAA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB36AEA-3C2B-4B82-9EFB-6C4F06C88C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB36AEA-3C2B-4B82-9EFB-6C4F06C88C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB36AEA-3C2B-4B82-9EFB-6C4F06C88C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB36AEA-3C2B-4B82-9EFB-6C4F06C88C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE709E65-8ED4-422E-BAD7-46460A43E488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE709E65-8ED4-422E-BAD7-46460A43E488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE709E65-8ED4-422E-BAD7-46460A43E488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE709E65-8ED4-422E-BAD7-46460A43E488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

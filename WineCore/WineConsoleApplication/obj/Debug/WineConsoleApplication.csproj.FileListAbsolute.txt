@@ -1,0 +1,14 @@
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.exe.config
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.exe
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.pdb
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.dll
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\Newtonsoft.Json.dll
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\WineCore.exe
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\WineCore.pdb
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.xml
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.SqlServer.xml
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\bin\Debug\Newtonsoft.Json.xml
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.csprojResolveAssemblyReference.cache
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.exe
+c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.pdb

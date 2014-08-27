@@ -1,0 +1,10 @@
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\WineCore.exe.config
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\WineCore.exe
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\WineCore.pdb
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\EntityFramework.dll
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\EntityFramework.xml
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\obj\Debug\WineCore.csprojResolveAssemblyReference.cache
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\obj\Debug\WineCore.exe
+c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\obj\Debug\WineCore.pdb

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WeatherDay">
+    <Key>
+      <PropertyRef Name="WeatherDayId" />
+    </Key>
+    <Property Name="WeatherDayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="HighTemperature" Type="Double" Nullable="false" />
+    <Property Name="LowTemperature" Type="Double" Nullable="false" />
+    <Property Name="Precipitation" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="WineDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="WeatherDays" EntityType="Self.WeatherDay" />
+    <EntitySet Name="Regions" EntityType="WineDBModel.Region" />
+    <EntitySet Name="Vintages" EntityType="WineDBModel.Vintage" />
+    <AssociationSet Name="FK_Vintages_Regions" Association="WineDBModel.FK_Vintages_Regions">
+      <End Role="Region" EntitySet="Regions" />
+      <End Role="Vintage" EntitySet="Vintages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="RegionId" />
+    </Key>
+    <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vintages" Relationship="WineDBModel.FK_Vintages_Regions" FromRole="Region" ToRole="Vintage" />
+  </EntityType>
+  <EntityType Name="Vintage">
+    <Key>
+      <PropertyRef Name="VintageId" />
+    </Key>
+    <Property Name="VintageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="RegionId" Type="Int32" Nullable="false" />
+    <Property Name="ParkerScore" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Region" Relationship="WineDBModel.FK_Vintages_Regions" FromRole="Vintage" ToRole="Region" />
+  </EntityType>
+  <Association Name="FK_Vintages_Regions">
+    <End Type="WineDBModel.Region" Role="Region" Multiplicity="1" />
+    <End Type="WineDBModel.Vintage" Role="Vintage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="RegionId" />
+      </Principal>
+      <Dependent Role="Vintage">
+        <PropertyRef Name="RegionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
