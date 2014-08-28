@@ -12,3 +12,17 @@ c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplica
 c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.csprojResolveAssemblyReference.cache
 c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.exe
 c:\Users\jonny\documents\visual studio 2013\Projects\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.exe.config
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.exe
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.exe
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\WineConsoleApplication.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.dll
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\WineCore.exe
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\WineCore.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.xml
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineConsoleApplication\obj\Debug\WineConsoleApplication.csprojResolveAssemblyReference.cache

@@ -115,8 +115,8 @@ namespace WineConsoleApplication
         public static void Main(string[] args)
         {
             ProcessRunner pr = new ProcessRunner();
-            //pr.DownloadWeatherData();
-            pr.AssessWeatherData();
+            pr.DownloadWeatherData();
+            //pr.AssessWeatherData();
             
 
             Console.ReadLine();
