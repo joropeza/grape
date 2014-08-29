@@ -33,12 +33,15 @@ angular.module('app', ['wines', 'ngMockE2E', 'ngRoute'])
 
     //console.log(JSON);
 
+  if ($location.host() == "localhost") {
+
 
     $httpBackend.whenGET('/api/Regions').respond(regionsJSON);
     $httpBackend.whenGET('/api/Regions/1').respond(regionJSON);
     $httpBackend.whenGET('/api/Vintages/1').respond(vintageJSON);
 
-
+  }
+  
     $httpBackend.whenGET(/app/).passThrough();
     $httpBackend.whenGET(/js/).passThrough();
     $httpBackend.whenGET(/api/).passThrough();
