@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="WineDBModel.Vintage" Width="1.5" PointX="3" PointY="3.875" />
         <AssociationConnector Association="WineDBModel.FK_Vintages_Regions" />
         <EntityTypeShape EntityType="WineDBModel.WeatherDay" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="WineDBModel.FK_WeatherDays_Vintages" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

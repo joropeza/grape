@@ -18,6 +18,36 @@ namespace WineConsoleApplication
 
         public const int CITY_ID = 1;
 
+        public void AffixVintage()
+        {
+            using (WineDBEntities wdb = new WineDBEntities())
+            {
+                foreach (var day in wdb.WeatherDays.Where(x => x.VintageId == null))
+                {
+                    if (day.Date.Year == 2010)
+                        day.VintageId = 2;
+                    if (day.Date.Year == 2011)
+                        day.VintageId = 3;
+                    if (day.Date.Year == 2012)
+                        day.VintageId = 4;
+                    if (day.Date.Year == 2013)
+                        day.VintageId = 5;
+                    if (day.Date.Year == 2014)
+                        day.VintageId = 6;
+                    if (day.Date.Year == 2009)
+                        day.VintageId = 7;
+                    
+
+                    Console.WriteLine("Updated " + day.Date.ToShortDateString());
+                }
+
+                wdb.SaveChanges();
+
+
+            }
+
+        }
+
         public void AssessWeatherData()
         {
             using (WineDBEntities wdb = new WineDBEntities())
@@ -41,9 +71,9 @@ namespace WineConsoleApplication
 
         public void DownloadWeatherData()
         {
-            DateTime startDate = DateTime.Now.AddMonths(-42);
+            DateTime startDate = DateTime.Now.AddMonths(-56);
 
-            while (startDate < DateTime.Now)
+            while (startDate < DateTime.Now.AddDays(-1))
             {
 
                 DateTime curDate = startDate;
@@ -115,8 +145,8 @@ namespace WineConsoleApplication
         public static void Main(string[] args)
         {
             ProcessRunner pr = new ProcessRunner();
-            pr.DownloadWeatherData();
-            //pr.AssessWeatherData();
+            //pr.DownloadWeatherData();
+            pr.AffixVintage();
             
 
             Console.ReadLine();

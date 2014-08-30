@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="WineDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="WineDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Cities">
     <Key>
       <PropertyRef Name="CityId" />
@@ -34,6 +34,9 @@
     <Property Name="HighTemperature" Type="float" Nullable="false" />
     <Property Name="LowTemperature" Type="float" Nullable="false" />
     <Property Name="Precipitation" Type="float" Nullable="false" />
+    <Property Name="MeanTemperature" Type="float" />
+    <Property Name="DegreeDays" Type="float" />
+    <Property Name="VintageId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Vintages_Regions">
     <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
@@ -47,6 +50,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_WeatherDays_Vintages">
+    <End Role="Vintages" Type="Self.Vintages" Multiplicity="1" />
+    <End Role="WeatherDays" Type="Self.WeatherDays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vintages">
+        <PropertyRef Name="VintageId" />
+      </Principal>
+      <Dependent Role="WeatherDays">
+        <PropertyRef Name="VintageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WineDBModelStoreContainer">
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
@@ -55,6 +70,10 @@
     <AssociationSet Name="FK_Vintages_Regions" Association="Self.FK_Vintages_Regions">
       <End Role="Regions" EntitySet="Regions" />
       <End Role="Vintages" EntitySet="Vintages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeatherDays_Vintages" Association="Self.FK_WeatherDays_Vintages">
+      <End Role="Vintages" EntitySet="Vintages" />
+      <End Role="WeatherDays" EntitySet="WeatherDays" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

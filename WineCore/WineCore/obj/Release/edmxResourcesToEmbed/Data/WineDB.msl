@@ -9,18 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="WeatherDays">
-      <EntityTypeMapping TypeName="WineDBModel.WeatherDay">
-        <MappingFragment StoreEntitySet="WeatherDays">
-          <ScalarProperty Name="WeatherDayId" ColumnName="WeatherDayId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="CityId" ColumnName="CityId" />
-          <ScalarProperty Name="HighTemperature" ColumnName="HighTemperature" />
-          <ScalarProperty Name="LowTemperature" ColumnName="LowTemperature" />
-          <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Regions">
       <EntityTypeMapping TypeName="WineDBModel.Region">
         <MappingFragment StoreEntitySet="Regions">
@@ -37,6 +25,21 @@
           <ScalarProperty Name="RegionId" ColumnName="RegionId" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="VintageId" ColumnName="VintageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeatherDays">
+      <EntityTypeMapping TypeName="WineDBModel.WeatherDay">
+        <MappingFragment StoreEntitySet="WeatherDays">
+          <ScalarProperty Name="VintageId" ColumnName="VintageId" />
+          <ScalarProperty Name="DegreeDays" ColumnName="DegreeDays" />
+          <ScalarProperty Name="MeanTemperature" ColumnName="MeanTemperature" />
+          <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />
+          <ScalarProperty Name="LowTemperature" ColumnName="LowTemperature" />
+          <ScalarProperty Name="HighTemperature" ColumnName="HighTemperature" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="WeatherDayId" ColumnName="WeatherDayId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

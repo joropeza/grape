@@ -7,25 +7,18 @@
     <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="City1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="WeatherDay">
-    <Key>
-      <PropertyRef Name="WeatherDayId" />
-    </Key>
-    <Property Name="WeatherDayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="CityId" Type="Int32" Nullable="false" />
-    <Property Name="HighTemperature" Type="Double" Nullable="false" />
-    <Property Name="LowTemperature" Type="Double" Nullable="false" />
-    <Property Name="Precipitation" Type="Double" Nullable="false" />
-  </EntityType>
   <EntityContainer Name="WineDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cities" EntityType="Self.City" />
-    <EntitySet Name="WeatherDays" EntityType="Self.WeatherDay" />
     <EntitySet Name="Regions" EntityType="WineDBModel.Region" />
     <EntitySet Name="Vintages" EntityType="WineDBModel.Vintage" />
     <AssociationSet Name="FK_Vintages_Regions" Association="WineDBModel.FK_Vintages_Regions">
       <End Role="Region" EntitySet="Regions" />
       <End Role="Vintage" EntitySet="Vintages" />
+    </AssociationSet>
+    <EntitySet Name="WeatherDays" EntityType="WineDBModel.WeatherDay" />
+    <AssociationSet Name="FK_WeatherDays_Vintages" Association="WineDBModel.FK_WeatherDays_Vintages">
+      <End Role="Vintage" EntitySet="Vintages" />
+      <End Role="WeatherDay" EntitySet="WeatherDays" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Region">
@@ -46,6 +39,7 @@
     <Property Name="RegionId" Type="Int32" Nullable="false" />
     <Property Name="ParkerScore" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Region" Relationship="WineDBModel.FK_Vintages_Regions" FromRole="Vintage" ToRole="Region" />
+    <NavigationProperty Name="WeatherDays" Relationship="WineDBModel.FK_WeatherDays_Vintages" FromRole="Vintage" ToRole="WeatherDay" />
   </EntityType>
   <Association Name="FK_Vintages_Regions">
     <End Type="WineDBModel.Region" Role="Region" Multiplicity="1" />
@@ -56,6 +50,33 @@
       </Principal>
       <Dependent Role="Vintage">
         <PropertyRef Name="RegionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="WeatherDay">
+    <Key>
+      <PropertyRef Name="WeatherDayId" />
+    </Key>
+    <Property Name="WeatherDayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="HighTemperature" Type="Double" Nullable="false" />
+    <Property Name="LowTemperature" Type="Double" Nullable="false" />
+    <Property Name="Precipitation" Type="Double" Nullable="false" />
+    <Property Name="MeanTemperature" Type="Double" />
+    <Property Name="DegreeDays" Type="Double" />
+    <Property Name="VintageId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Vintage" Relationship="WineDBModel.FK_WeatherDays_Vintages" FromRole="WeatherDay" ToRole="Vintage" />
+  </EntityType>
+  <Association Name="FK_WeatherDays_Vintages">
+    <End Type="WineDBModel.Vintage" Role="Vintage" Multiplicity="1" />
+    <End Type="WineDBModel.WeatherDay" Role="WeatherDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vintage">
+        <PropertyRef Name="VintageId" />
+      </Principal>
+      <Dependent Role="WeatherDay">
+        <PropertyRef Name="VintageId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

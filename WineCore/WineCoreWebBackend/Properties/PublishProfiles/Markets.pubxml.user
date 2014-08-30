@@ -10,82 +10,82 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/AngularAuth.mdf">
-      <publishTime>08/23/2014 15:37:14</publishTime>
+      <publishTime>08/28/2014 21:13:51</publishTime>
     </File>
     <File Include="App_Data/AngularAuth_log.ldf">
-      <publishTime>08/23/2014 15:37:14</publishTime>
+      <publishTime>08/28/2014 21:13:51</publishTime>
     </File>
     <File Include="App_Data/Movies.mdf">
-      <publishTime>08/23/2014 15:33:29</publishTime>
+      <publishTime>08/28/2014 21:13:51</publishTime>
     </File>
     <File Include="App_Data/Movies_log.ldf">
-      <publishTime>08/23/2014 15:33:29</publishTime>
+      <publishTime>08/28/2014 21:13:51</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:53</publishTime>
     </File>
     <File Include="bin/MarketMachineWebBackend.dll">
-      <publishTime>08/24/2014 16:49:04</publishTime>
+      <publishTime>08/30/2014 08:31:19</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Cors.dll">
-      <publishTime>08/24/2014 14:07:40</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>08/24/2014 14:07:40</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>08/24/2014 14:07:40</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>08/24/2014 14:07:41</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>08/24/2014 14:07:41</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>08/24/2014 14:07:41</publishTime>
+      <publishTime>08/28/2014 21:13:55</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/23/2014 18:26:35</publishTime>
+      <publishTime>08/28/2014 21:13:55</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>08/24/2014 14:07:41</publishTime>
+      <publishTime>08/28/2014 21:13:55</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>08/24/2014 14:07:38</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/System.Web.Cors.dll">
-      <publishTime>08/24/2014 14:07:34</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>08/24/2014 14:07:38</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/System.Web.Http.Owin.dll">
-      <publishTime>08/24/2014 14:07:38</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>08/24/2014 14:07:40</publishTime>
+      <publishTime>08/28/2014 21:13:54</publishTime>
     </File>
     <File Include="bin/WineCore.exe">
-      <publishTime>08/24/2014 16:49:04</publishTime>
+      <publishTime>08/30/2014 08:26:41</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/23/2014 15:57:21</publishTime>
+      <publishTime>08/28/2014 21:13:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/24/2014 16:37:09</publishTime>
+      <publishTime>08/30/2014 08:26:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

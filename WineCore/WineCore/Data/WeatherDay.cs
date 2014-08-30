@@ -22,5 +22,8 @@ namespace WineCore.Data
         public double Precipitation { get; set; }
         public Nullable<double> MeanTemperature { get; set; }
         public Nullable<double> DegreeDays { get; set; }
+        public int VintageId { get; set; }
+    
+        public virtual Vintage Vintage { get; set; }
     }
 }

@@ -14,11 +14,17 @@ namespace WineCore.Data
     
     public partial class Vintage
     {
+        public Vintage()
+        {
+            this.WeatherDays = new HashSet<WeatherDay>();
+        }
+    
         public int VintageId { get; set; }
         public int Year { get; set; }
         public int RegionId { get; set; }
         public int ParkerScore { get; set; }
     
         public virtual Region Region { get; set; }
+        public virtual ICollection<WeatherDay> WeatherDays { get; set; }
     }
 }

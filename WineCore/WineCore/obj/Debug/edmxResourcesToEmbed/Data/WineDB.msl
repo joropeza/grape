@@ -31,6 +31,7 @@
     <EntitySetMapping Name="WeatherDays">
       <EntityTypeMapping TypeName="WineDBModel.WeatherDay">
         <MappingFragment StoreEntitySet="WeatherDays">
+          <ScalarProperty Name="VintageId" ColumnName="VintageId" />
           <ScalarProperty Name="DegreeDays" ColumnName="DegreeDays" />
           <ScalarProperty Name="MeanTemperature" ColumnName="MeanTemperature" />
           <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />

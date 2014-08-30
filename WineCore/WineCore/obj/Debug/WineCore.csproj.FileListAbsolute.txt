@@ -11,3 +11,10 @@ c:\users\jonny\documents\visual studio 2013\Projects\WineCore\WineCore\obj\Debug
 C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\WineCore.exe.config
 C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\obj\Debug\WineCore.exe
 C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\obj\Debug\WineCore.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\WineCore.exe
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\WineCore.pdb
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\EntityFramework.dll
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\EntityFramework.xml
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jonny\Documents\GitHub\grape\WineCore\WineCore\obj\Debug\WineCore.csprojResolveAssemblyReference.cache
