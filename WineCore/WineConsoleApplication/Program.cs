@@ -69,11 +69,27 @@ namespace WineConsoleApplication
 
         }
 
-        public void DownloadWeatherData()
+        public void RunMe()
+        {
+            //determine a vintage that doesn't have complete data
+
+            //start with 1/1 of that vintage
+
+            //do the download
+
+            //run the assessment
+
+            //see if there are any runs left for more fun
+
+        }
+
+        public int DownloadWeatherData(int vintageId, int allowedRuns)
         {
             DateTime startDate = DateTime.Now.AddMonths(-56);
 
-            while (startDate < DateTime.Now.AddDays(-1))
+            int apiCalls = 0;
+
+            while (apiCalls < allowedRuns && startDate < DateTime.Now.AddDays(-1))
             {
 
                 DateTime curDate = startDate;
@@ -92,6 +108,7 @@ namespace WineConsoleApplication
 
                         XmlDocument xmlTemp = new XmlDocument();
                         xmlTemp.Load(string.Format(weatherUndergroundAddress, weatherUndergroundKey, formattedDate));
+                        apiCalls++;
 
                         foreach (XmlNode obs in xmlTemp.SelectNodes(tempXPath))
                         {
@@ -133,6 +150,8 @@ namespace WineConsoleApplication
                 startDate = startDate.AddDays(1);
             }
 
+            return apiCalls;
+
         }
 
 
@@ -145,8 +164,8 @@ namespace WineConsoleApplication
         public static void Main(string[] args)
         {
             ProcessRunner pr = new ProcessRunner();
-            //pr.DownloadWeatherData();
-            pr.AffixVintage();
+            pr.DownloadWeatherData();
+            //pr.AffixVintage();
             
 
             Console.ReadLine();
