@@ -25,5 +25,6 @@ namespace WineCore.Data
         public int VintageId { get; set; }
     
         public virtual Vintage Vintage { get; set; }
+        public virtual City City { get; set; }
     }
 }

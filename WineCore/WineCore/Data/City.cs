@@ -14,7 +14,19 @@ namespace WineCore.Data
     
     public partial class City
     {
+        public City()
+        {
+            this.WeatherDays = new HashSet<WeatherDay>();
+            this.CityVintages = new HashSet<CityVintage>();
+        }
+    
         public int CityId { get; set; }
         public string City1 { get; set; }
+        public int RegionId { get; set; }
+        public string WundergroundEndpoint { get; set; }
+    
+        public virtual Region Region { get; set; }
+        public virtual ICollection<WeatherDay> WeatherDays { get; set; }
+        public virtual ICollection<CityVintage> CityVintages { get; set; }
     }
 }

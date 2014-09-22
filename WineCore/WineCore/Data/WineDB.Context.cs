@@ -29,5 +29,6 @@ namespace WineCore.Data
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Vintage> Vintages { get; set; }
         public virtual DbSet<WeatherDay> WeatherDays { get; set; }
+        public virtual DbSet<CityVintage> CityVintages { get; set; }
     }
 }

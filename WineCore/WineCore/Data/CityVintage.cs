@@ -12,21 +12,14 @@ namespace WineCore.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Vintage
+    public partial class CityVintage
     {
-        public Vintage()
-        {
-            this.WeatherDays = new HashSet<WeatherDay>();
-            this.CityVintages = new HashSet<CityVintage>();
-        }
-    
+        public int CityVintageId { get; set; }
+        public int CityId { get; set; }
         public int VintageId { get; set; }
-        public int Year { get; set; }
-        public int RegionId { get; set; }
-        public int ParkerScore { get; set; }
+        public double HeatingDays { get; set; }
     
-        public virtual Region Region { get; set; }
-        public virtual ICollection<WeatherDay> WeatherDays { get; set; }
-        public virtual ICollection<CityVintage> CityVintages { get; set; }
+        public virtual City City { get; set; }
+        public virtual Vintage Vintage { get; set; }
     }
 }

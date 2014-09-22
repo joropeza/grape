@@ -17,6 +17,7 @@ namespace WineCore.Data
         public Region()
         {
             this.Vintages = new HashSet<Vintage>();
+            this.Cities = new HashSet<City>();
         }
     
         public int RegionId { get; set; }
@@ -24,5 +25,6 @@ namespace WineCore.Data
         public string Country { get; set; }
     
         public virtual ICollection<Vintage> Vintages { get; set; }
+        public virtual ICollection<City> Cities { get; set; }
     }
 }

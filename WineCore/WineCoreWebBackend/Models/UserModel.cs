@@ -6,6 +6,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MarketMachineWebBackend.Models
 {
+    public enum ApplicationTypes
+    {
+        JavaScript = 0,
+        NativeConfidential = 1
+    };
+
     public class UserModel
     {
         [Required]

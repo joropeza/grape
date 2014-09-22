@@ -6,17 +6,27 @@ using System.Threading.Tasks;
 using System.Xml;
 
 using WineCore.Data;
+using WineCore.Services;
 
 namespace WineConsoleApplication
 {
 
     public class ProcessRunner
     {
-        public const string weatherUndergroundAddress = "http://api.wunderground.com/api/{0}/history_{1}/q/OR/Newberg.xml";
         public const string tempXPath = "/response/history/dailysummary/summary";
         public const string weatherUndergroundKey = "bab67802d793f7ff";
 
         public const int CITY_ID = 1;
+
+        public RegionService rs = new RegionService();
+
+        public void UnitTest_RegionList()
+        {
+            ServiceResponseMessage request = new ServiceResponseMessage();
+            rs.List(request);
+            foreach (var region in ((RegionList)request.RequestObject).Regions)
+                Console.WriteLine(region.AreaName);
+        }
 
         public void AffixVintage()
         {
@@ -69,89 +79,159 @@ namespace WineConsoleApplication
 
         }
 
+        public void SumCityVintage()
+        {
+            //find cities / vintages that have more than 360 days but don't have a CityVintage row
+
+            using (WineDBEntities wdb = new WineDBEntities())
+            {
+                var sumVintages = wdb.WeatherDays.GroupBy(x => x.Date.Year).Select(n => new { n.Key, CityId = n.Max(z => z.CityId), VintageId = n.Max(z => z.VintageId), Count = n.Count(), DegreeDays = n.Sum(y => y.DegreeDays) });
+
+                foreach (var vint in sumVintages)
+                {
+                    //is this in the db?
+                    var thisVInt = wdb.CityVintages.Where(x => x.CityId == vint.CityId && x.VintageId == vint.VintageId).FirstOrDefault();
+                    if (thisVInt == null)
+                    {
+                        //nothing there, so add it to the table
+                        using (WineDBEntities wdbSaver = new WineDBEntities()) { 
+                        var newVint = new CityVintage() { CityId = vint.CityId, VintageId = vint.VintageId, HeatingDays = vint.DegreeDays.Value };
+                        wdbSaver.CityVintages.Add(newVint);
+                        wdbSaver.SaveChanges();
+                        }
+
+                    }
+
+                }
+
+            //sum heating days, add them to the table
+
+            }
+        }
+
         public void RunMe()
         {
-            //determine a vintage that doesn't have complete data
+            int nextVintage = 1;
+            int runsRemaining = 475;
 
-            //start with 1/1 of that vintage
 
-            //do the download
+            while (runsRemaining > 0 && nextVintage > 0)
+            {
 
-            //run the assessment
+                //determine a vintage that doesn't have complete data
+           
+                using (WineDBEntities wdb = new WineDBEntities())
+                {
+                    var vintages = wdb.Vintages.Where(x => x.Year<DateTime.Now.Year && x.WeatherDays.Count() < 365).FirstOrDefault();
+                    if (vintages != null)
+                        nextVintage = vintages.VintageId;
+                    else
+                        nextVintage = 0;
 
-            //see if there are any runs left for more fun
+                }
+
+                //start with 1/1 of that vintage
+
+                Console.WriteLine("Gathering data for VintageId " + nextVintage.ToString());
+                runsRemaining = runsRemaining - DownloadWeatherData(nextVintage, runsRemaining);
+
+                //do the download
+
+                //run the assessment
+
+                AssessWeatherData();
+
+                //see if there are any runs left for more fun
+            }
 
         }
 
         public int DownloadWeatherData(int vintageId, int allowedRuns)
         {
-            DateTime startDate = DateTime.Now.AddMonths(-56);
-
             int apiCalls = 0;
 
-            while (apiCalls < allowedRuns && startDate < DateTime.Now.AddDays(-1))
+            //set the start date by vintage
+            using (WineDBEntities wdbVintage = new WineDBEntities())
             {
+                var vintage = wdbVintage.Vintages.Find(vintageId);
 
-                DateTime curDate = startDate;
+                DateTime startDate = DateTime.Parse("01/01/" + vintage.Year.ToString());
 
-                using (WineDBEntities wdb = new WineDBEntities())
+                
+                while (apiCalls < allowedRuns && startDate < DateTime.Parse("12/31/" + vintage.Year.ToString()) && allowedRuns > 0)
                 {
 
-                    if (wdb.WeatherDays.Where(x => x.CityId == CITY_ID && x.Date == curDate.Date).Count() == 0)
+                    DateTime curDate = startDate;
+
+                    foreach (var city in vintage.Region.Cities)
                     {
 
-                        string formattedDate = curDate.ToString("yyyyMMdd");
-                                               
-                        double high = 0;
-                        double low = 0;
-                        double precip = 0;
+                        string weatherUndergroundAddress = city.WundergroundEndpoint;
 
-                        XmlDocument xmlTemp = new XmlDocument();
-                        xmlTemp.Load(string.Format(weatherUndergroundAddress, weatherUndergroundKey, formattedDate));
-                        apiCalls++;
-
-                        foreach (XmlNode obs in xmlTemp.SelectNodes(tempXPath))
+                        using (WineDBEntities wdb = new WineDBEntities())
                         {
-                            foreach (XmlNode node in obs.ChildNodes)
-                            {
-                                Console.WriteLine(node.Name + " - " + node.InnerText);
 
-                                if (node.Name == "maxtempi")
-                                    high = Convert.ToDouble(node.InnerText);
-                                if (node.Name == "mintempi")
-                                    low = Convert.ToDouble(node.InnerText);
-                                if (node.Name == "precipi")
-                                    if (node.InnerText == "T")
-                                        precip = .01;
-                                    else
-                                        precip = Convert.ToDouble(node.InnerText);
+                            if (wdb.WeatherDays.Where(x => x.CityId == CITY_ID && x.Date == curDate.Date).Count() == 0)
+                            {
+
+                                string formattedDate = curDate.ToString("yyyyMMdd");
+
+                                double high = 0;
+                                double low = 0;
+                                double precip = 0;
+
+                                XmlDocument xmlTemp = new XmlDocument();
+                                xmlTemp.Load(string.Format(weatherUndergroundAddress, weatherUndergroundKey, formattedDate));
+                                apiCalls++;
+
+                                foreach (XmlNode obs in xmlTemp.SelectNodes(tempXPath))
+                                {
+                                    foreach (XmlNode node in obs.ChildNodes)
+                                    {
+                                        Console.WriteLine(node.Name + " - " + node.InnerText);
+
+                                        if (node.Name == "maxtempi")
+                                            high = Convert.ToDouble(node.InnerText);
+                                        if (node.Name == "mintempi")
+                                            low = Convert.ToDouble(node.InnerText);
+                                        if (node.Name == "precipi")
+                                            if (node.InnerText == "T")
+                                                precip = .01;
+                                            else
+                                                precip = Convert.ToDouble(node.InnerText);
+
+                                    }
+
+
+
+                                    WeatherDay wd = new WeatherDay();
+                                    wd.CityId = CITY_ID;
+                                    wd.Date = curDate;
+                                    wd.HighTemperature = high;
+                                    wd.LowTemperature = low;
+                                    wd.Precipitation = precip;
+                                    wd.VintageId = vintageId;
+                                    wdb.WeatherDays.Add(wd);
+
+                                    wdb.SaveChanges();
+                                }
+
+                                System.Threading.Thread.Sleep(8000);
 
                             }
 
 
-
-                            WeatherDay wd = new WeatherDay();
-                            wd.CityId = CITY_ID;
-                            wd.Date = curDate;
-                            wd.HighTemperature = high;
-                            wd.LowTemperature = low;
-                            wd.Precipitation = precip;
-                            wdb.WeatherDays.Add(wd);
-                            wdb.SaveChanges();
                         }
-
-                        System.Threading.Thread.Sleep(8000);
 
                     }
 
-
+                    startDate = startDate.AddDays(1);
+                    allowedRuns--;
                 }
 
-                startDate = startDate.AddDays(1);
             }
-
-            return apiCalls;
-
+           
+             return apiCalls;
         }
 
 
@@ -164,9 +244,9 @@ namespace WineConsoleApplication
         public static void Main(string[] args)
         {
             ProcessRunner pr = new ProcessRunner();
-            pr.DownloadWeatherData();
-            //pr.AffixVintage();
-            
+            //pr.RunMe();
+            pr.UnitTest_RegionList();
+            pr.SumCityVintage();
 
             Console.ReadLine();
 

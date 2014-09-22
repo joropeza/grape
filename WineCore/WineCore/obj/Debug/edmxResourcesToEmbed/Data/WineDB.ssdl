@@ -6,6 +6,17 @@
     </Key>
     <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegionId" Type="int" Nullable="false" />
+    <Property Name="WundergroundEndpoint" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CityVintages">
+    <Key>
+      <PropertyRef Name="CityVintageId" />
+    </Key>
+    <Property Name="CityVintageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="VintageId" Type="int" Nullable="false" />
+    <Property Name="HeatingDays" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Regions">
     <Key>
@@ -38,6 +49,42 @@
     <Property Name="DegreeDays" Type="float" />
     <Property Name="VintageId" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Cities_Regions">
+    <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regions">
+        <PropertyRef Name="RegionId" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="RegionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityVintages_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="CityVintages" Type="Self.CityVintages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="CityVintages">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityVintages_Vintages">
+    <End Role="Vintages" Type="Self.Vintages" Multiplicity="1" />
+    <End Role="CityVintages" Type="Self.CityVintages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vintages">
+        <PropertyRef Name="VintageId" />
+      </Principal>
+      <Dependent Role="CityVintages">
+        <PropertyRef Name="VintageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Vintages_Regions">
     <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
     <End Role="Vintages" Type="Self.Vintages" Multiplicity="*" />
@@ -47,6 +94,18 @@
       </Principal>
       <Dependent Role="Vintages">
         <PropertyRef Name="RegionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeatherDays_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="WeatherDays" Type="Self.WeatherDays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="WeatherDays">
+        <PropertyRef Name="CityId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -64,12 +123,29 @@
   </Association>
   <EntityContainer Name="WineDBModelStoreContainer">
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CityVintages" EntityType="Self.CityVintages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vintages" EntityType="Self.Vintages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WeatherDays" EntityType="Self.WeatherDays" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cities_Regions" Association="Self.FK_Cities_Regions">
+      <End Role="Regions" EntitySet="Regions" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityVintages_Cities" Association="Self.FK_CityVintages_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="CityVintages" EntitySet="CityVintages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityVintages_Vintages" Association="Self.FK_CityVintages_Vintages">
+      <End Role="Vintages" EntitySet="Vintages" />
+      <End Role="CityVintages" EntitySet="CityVintages" />
+    </AssociationSet>
     <AssociationSet Name="FK_Vintages_Regions" Association="Self.FK_Vintages_Regions">
       <End Role="Regions" EntitySet="Regions" />
       <End Role="Vintages" EntitySet="Vintages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeatherDays_Cities" Association="Self.FK_WeatherDays_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="WeatherDays" EntitySet="WeatherDays" />
     </AssociationSet>
     <AssociationSet Name="FK_WeatherDays_Vintages" Association="Self.FK_WeatherDays_Vintages">
       <End Role="Vintages" EntitySet="Vintages" />

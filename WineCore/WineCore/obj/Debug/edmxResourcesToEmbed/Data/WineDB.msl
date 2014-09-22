@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="WineDBModel.City">
         <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="WundergroundEndpoint" ColumnName="WundergroundEndpoint" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
           <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="City1" ColumnName="City" />
         </MappingFragment>
@@ -40,6 +42,16 @@
           <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="WeatherDayId" ColumnName="WeatherDayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityVintages">
+      <EntityTypeMapping TypeName="WineDBModel.CityVintage">
+        <MappingFragment StoreEntitySet="CityVintages">
+          <ScalarProperty Name="HeatingDays" ColumnName="HeatingDays" />
+          <ScalarProperty Name="VintageId" ColumnName="VintageId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityVintageId" ColumnName="CityVintageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
