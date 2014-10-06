@@ -139,6 +139,8 @@
     <Property Name="HeatingDays" Type="Double" Nullable="false" />
     <NavigationProperty Name="City" Relationship="WineDBModel.FK_CityVintages_Cities" FromRole="CityVintage" ToRole="City" />
     <NavigationProperty Name="Vintage" Relationship="WineDBModel.FK_CityVintages_Vintages" FromRole="CityVintage" ToRole="Vintage" />
+    <Property Name="FirstThreePositiveDays" Type="DateTime" Precision="0" />
+    <Property Name="FirstThreeZeroDays" Type="DateTime" Precision="0" />
   </EntityType>
   <Association Name="FK_CityVintages_Cities">
     <End Type="WineDBModel.City" Role="City" Multiplicity="1" />

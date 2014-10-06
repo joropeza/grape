@@ -48,6 +48,8 @@
     <EntitySetMapping Name="CityVintages">
       <EntityTypeMapping TypeName="WineDBModel.CityVintage">
         <MappingFragment StoreEntitySet="CityVintages">
+          <ScalarProperty Name="FirstThreeZeroDays" ColumnName="FirstThreeZeroDays" />
+          <ScalarProperty Name="FirstThreePositiveDays" ColumnName="FirstThreePositiveDays" />
           <ScalarProperty Name="HeatingDays" ColumnName="HeatingDays" />
           <ScalarProperty Name="VintageId" ColumnName="VintageId" />
           <ScalarProperty Name="CityId" ColumnName="CityId" />

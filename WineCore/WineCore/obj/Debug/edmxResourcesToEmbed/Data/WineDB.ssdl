@@ -17,6 +17,8 @@
     <Property Name="CityId" Type="int" Nullable="false" />
     <Property Name="VintageId" Type="int" Nullable="false" />
     <Property Name="HeatingDays" Type="float" Nullable="false" />
+    <Property Name="FirstThreePositiveDays" Type="date" />
+    <Property Name="FirstThreeZeroDays" Type="date" />
   </EntityType>
   <EntityType Name="Regions">
     <Key>

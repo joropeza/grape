@@ -122,7 +122,7 @@ namespace WineConsoleApplication
            
                 using (WineDBEntities wdb = new WineDBEntities())
                 {
-                    var vintages = wdb.Vintages.Where(x => x.Year<DateTime.Now.Year && x.WeatherDays.Count() < 365).FirstOrDefault();
+                    var vintages = wdb.Vintages.Where(x => x.Year<DateTime.Now.Year && x.WeatherDays.Count() < 355).FirstOrDefault();
                     if (vintages != null)
                         nextVintage = vintages.VintageId;
                     else
@@ -148,7 +148,7 @@ namespace WineConsoleApplication
 
         public int DownloadWeatherData(int vintageId, int allowedRuns)
         {
-            int apiCalls = 0;
+            int apiCalls = 1;
 
             //set the start date by vintage
             using (WineDBEntities wdbVintage = new WineDBEntities())
@@ -226,7 +226,7 @@ namespace WineConsoleApplication
                     }
 
                     startDate = startDate.AddDays(1);
-                    allowedRuns--;
+                    
                 }
 
             }
@@ -234,6 +234,48 @@ namespace WineConsoleApplication
              return apiCalls;
         }
 
+        public void TestReport()
+        {
+            using (WineDBEntities wdb = new WineDBEntities())
+            {
+                var cvs = wdb.CityVintages;
+                foreach (var cv in cvs)
+                {
+                    var thisDate = GetEstimatedBudBreak(cv.CityVintageId);
+                    Console.WriteLine(cv.Vintage.Region.Name + " " + cv.Vintage.Year + " " + thisDate.ToShortDateString());
+                }
+            }
+        }
+
+        public DateTime GetEstimatedBudBreak(int CityVintage)
+        {
+            using (WineDBEntities wdb = new WineDBEntities())
+            {
+                var cv = wdb.CityVintages.Find(CityVintage);
+                var weatherDays = cv.City.WeatherDays.Where(x => x.VintageId == cv.VintageId);
+
+                int consecutiveDays = 0;
+
+                foreach (var day in weatherDays.OrderBy(x => x.Date))
+                {
+                    if (day.DegreeDays > 0)
+                        consecutiveDays++;
+                    else                    
+                        consecutiveDays = 0;
+                   if (consecutiveDays == 5 )
+                        return day.Date.Date;
+                 
+
+
+                    
+                }
+
+                return DateTime.Now;
+
+            }
+
+            
+        }
 
     }
 
@@ -244,9 +286,11 @@ namespace WineConsoleApplication
         public static void Main(string[] args)
         {
             ProcessRunner pr = new ProcessRunner();
-            //pr.RunMe();
-            pr.UnitTest_RegionList();
+            pr.RunMe();
+            //pr.UnitTest_RegionList();
             pr.SumCityVintage();
+
+            //pr.TestReport();
 
             Console.ReadLine();
 

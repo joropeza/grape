@@ -22,6 +22,8 @@
           <Property Name="CityId" Type="int" Nullable="false" />
           <Property Name="VintageId" Type="int" Nullable="false" />
           <Property Name="HeatingDays" Type="float" Nullable="false" />
+          <Property Name="FirstThreePositiveDays" Type="date" />
+          <Property Name="FirstThreeZeroDays" Type="date" />
         </EntityType>
         <EntityType Name="Regions">
           <Key>
@@ -300,6 +302,8 @@
           <Property Name="HeatingDays" Type="Double" Nullable="false" />
           <NavigationProperty Name="City" Relationship="WineDBModel.FK_CityVintages_Cities" FromRole="CityVintage" ToRole="City" />
           <NavigationProperty Name="Vintage" Relationship="WineDBModel.FK_CityVintages_Vintages" FromRole="CityVintage" ToRole="Vintage" />
+          <Property Name="FirstThreePositiveDays" Type="DateTime" Precision="0" />
+          <Property Name="FirstThreeZeroDays" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_CityVintages_Cities">
           <End Type="WineDBModel.City" Role="City" Multiplicity="1" />
@@ -378,6 +382,8 @@
           <EntitySetMapping Name="CityVintages">
             <EntityTypeMapping TypeName="WineDBModel.CityVintage">
               <MappingFragment StoreEntitySet="CityVintages">
+                <ScalarProperty Name="FirstThreeZeroDays" ColumnName="FirstThreeZeroDays" />
+                <ScalarProperty Name="FirstThreePositiveDays" ColumnName="FirstThreePositiveDays" />
                 <ScalarProperty Name="HeatingDays" ColumnName="HeatingDays" />
                 <ScalarProperty Name="VintageId" ColumnName="VintageId" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />

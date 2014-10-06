@@ -18,6 +18,8 @@ namespace WineCore.Data
         public int CityId { get; set; }
         public int VintageId { get; set; }
         public double HeatingDays { get; set; }
+        public Nullable<System.DateTime> FirstThreePositiveDays { get; set; }
+        public Nullable<System.DateTime> FirstThreeZeroDays { get; set; }
     
         public virtual City City { get; set; }
         public virtual Vintage Vintage { get; set; }
